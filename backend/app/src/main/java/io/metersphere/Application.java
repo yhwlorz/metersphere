@@ -16,10 +16,10 @@ import org.springframework.context.annotation.PropertySource;
         LdapAutoConfiguration.class,
         Neo4jAutoConfiguration.class
 })
-@PropertySource(value = {
+/*@PropertySource(value = {
         "classpath:commons.properties",
-        "file:/opt/metersphere/conf/metersphere.properties",
-}, encoding = "UTF-8", ignoreResourceNotFound = true)
+        "file:/opt/metersphere/conf/metersphere-dev.properties",
+}, encoding = "UTF-8", ignoreResourceNotFound = true)*/
 @ServletComponentScan
 @EnableConfigurationProperties({
         MinioProperties.class,

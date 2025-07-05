@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    quartz:
+      url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+  kafka:
+    bootstrap-servers: ${kafka.bootstrap-servers}
+  redis:
+    redisson:
+      file: file:/opt/metersphere/conf/redisson.yml
+
+
+jmeter:
+  home: /opt/jmeter

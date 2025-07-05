@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.16.2.27:3306/metersphere?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Password123@mysql
+    quartz:
+      url: jdbc:mysql://10.16.2.27:3306/metersphere?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: Password123@mysql
+  kafka:
+    bootstrap-servers: 10.16.2.27:9200
+  redis:
+    redisson:
+      file: classpath:redisson-dev.yml
+
+jmeter:
+  home: ./jmeter
+
+minio:
+  endpoint: http://10.16.2.27:9000
+  accessKey: admin
+  secretKey: Password123@minio

@@ -1,0 +1,11 @@
+singleServerConfig:
+  address: "redis://10.16.2.27:6379"
+  password: Password123@redis
+  database: 0
+  idleConnectionTimeout: 10000
+  connectTimeout: 10000
+  timeout: 3000
+  pingConnectionInterval: 1000
+
+threads: 4
+nettyThreads: 8

@@ -1,0 +1,126 @@
+spring:
+  application:
+    name: metersphere
+
+  profiles:
+    active: dev
+
+  threads:
+    virtual:
+      enabled: true
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 100
+      minimum-idle: 10
+      idle-timeout: 300000
+      auto-commit: true
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+    quartz:
+      hikari:
+        maximum-pool-size: 50
+        minimum-idle: 10
+        idle-timeout: 300000
+        auto-commit: true
+        pool-name: DatebookHikariCP
+        max-lifetime: 1800000
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+  kafka:
+    consumer:
+      group-id: metersphere_group_id
+      listener:
+        missing-topics-fatal: false
+      properties:
+        max.partition.fetch.bytes: 1073741824
+    producer:
+      properties:
+        max.request.size: 1073741824
+        buffer.memory: 1073741824
+      batch-size: 16384
+      acks: 1
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  messages:
+    basename: i18n/commons,i18n/api,i18n/bug,i18n/case,i18n/plan,i18n/project,i18n/system,i18n/dashboard
+    default-locale: zh_CN
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:migration
+    table: metersphere_version
+    baseline-version: 0
+    encoding: UTF-8
+    validate-on-migrate: false
+  session:
+    timeout: 43200s
+    redis:
+      repository-type: indexed
+  freemarker:
+    check-template-location: false
+  groovy:
+    template:
+      check-template-location: false
+  ai:
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: never
+
+management:
+  server:
+    port: 7071
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: false
+
+server:
+  port: 8081
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/javascript,text/css,text/javascript,image/jpeg
+    min-response-size: 2048
+
+logging:
+  file:
+    path: ./logs/metersphere
+
+quartz:
+  enabled: true
+  scheduler-name: msScheduler
+  thread-count: 10
+  properties:
+    org.quartz.jobStore.acquireTriggersWithinLock: true
+
+mybatis:
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: false
+    aggressive-lazy-loading: true
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    auto-mapping-behavior: full
+    default-statement-timeout: 25000
+    map-underscore-to-camel-case: true
+
+
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: false
+    groups:
+      enabled: true
+
+metersphere:
+  file:
+    batch-download-max: 600MB
